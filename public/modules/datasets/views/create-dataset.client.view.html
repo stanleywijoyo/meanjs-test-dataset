@@ -3,7 +3,7 @@
         <h1>New Dataset</h1>
     </div>
     <div class="col-md-12">
-        <form name="datasetForm" class="form-horizontal" data-ng-submit="create()" novalidate>
+        <form name="datasetForm" class="form-horizontal" data-ng-submit="create()">
             <fieldset>
                 <div class="form-group">
                     <label class="control-label" for="name">Name</label>
@@ -17,24 +17,27 @@
                 <div class="form-group">
                     <label class="control-label" for="name">Size</label>
                     <div class="controls">
-                        <input type="text" data-ng-model="size" id="size" class="form-control" placeholder="Size">
+                        <input type="number" max="1000000" data-ng-model="size" id="size" class="form-control" placeholder="Size">
                     </div>
+        						<div ng-show="submitted && datasetForm.size.$invalid" class="help-block">
+												<p ng-show="datasetForm.size.$error.number" class="text-danger">Size is not a valid number</p>
+										</div>
                 </div>
 								<div class="form-group">
-										<label class="control-label" for="content">Description</label>
+										<label class="control-label" for="description">Description</label>
 										<div class="controls">
-												<textarea name="description" data-ng-model="description" id="description" class="form-control" cols="30" rows="10" placeholder="Description"></textarea>
+												<textarea name="description" data-ng-model="description" id="description" class="form-control" cols="30" rows="10" placeholder="Description" required></textarea>
 										</div>
-        						<div ng-show="submitted && datasetForm.description.$invalid" class="help-block">
-												<p ng-show="datasetForm.description.$error.required" class="text-danger">Description is required</p>
+										<div ng-show="submitted && datasetForm.size.$invalid" class="help-block">
+												<p ng-show="submitted && datasetForm.description.$error.required" class="text-danger">Description is required</p>
 										</div>
 								</div>
                 <div class="form-group">
                     <input type="submit" class="btn btn-default">
                 </div>
-						<div data-ng-show="error" class="text-danger">
-							<strong data-ng-bind="error"></strong>
-						</div>
+								<div data-ng-show="error" class="text-danger">
+										<strong data-ng-bind="error"></strong>
+								</div>
             </fieldset>
         </form>
     </div>
