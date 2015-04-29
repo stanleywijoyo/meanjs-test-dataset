@@ -19,7 +19,7 @@
                     <div class="controls">
                         <input type="number" max="1000000" data-ng-model="dataset.size" id="size" class="form-control" placeholder="Size" step="0.01">
                     </div>
-        						<div ng-show="datasetForm.size.$invalid" class="help-block">
+        						<div ng-show="submitted && datasetForm.size.$invalid" class="help-block">
 												<p ng-show="datasetForm.size.$error.number" class="text-danger">Size is not a valid number</p>
 										</div>
                 </div>
